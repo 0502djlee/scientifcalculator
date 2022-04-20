@@ -1,2 +1,2 @@
 # scientifcalculator
-a calculator
+code for a calculator that will be used in an app
