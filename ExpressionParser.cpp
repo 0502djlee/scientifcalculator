@@ -118,6 +118,7 @@ bool ExpressionParser::parseBinaryOperator()
 
 bool ExpressionParser::parseNumber()
 {
+
 	bool isInt = 1;
 	string num;
 	if (!isdigit(_next)) {
@@ -173,6 +174,10 @@ bool ExpressionParser::parseNumber()
 	const char* start = num.c_str();
 	char* end;
 	p = strtol(start, &end, 10);
+	if (isInt)
+		p = strtol(start, &end, 10);
+	else
+		p = strtod(start, &end);
 	if (end - start != num.length())
 		syntaxError();
 	_operands.push(ExpressionPointer(new ConstExpression(p)));
@@ -248,8 +253,8 @@ bool ExpressionParser::parseName()
 		case '=':
 		case '(':
 		case ')':
-		case '.':
 		case ',':
+		case '.':
 			done = 1;
 			break;
 		default:
