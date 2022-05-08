@@ -173,7 +173,6 @@ bool ExpressionParser::parseNumber()
 	double p;
 	const char* start = num.c_str();
 	char* end;
-	p = strtol(start, &end, 10);
 	if (isInt)
 		p = strtol(start, &end, 10);
 	else
